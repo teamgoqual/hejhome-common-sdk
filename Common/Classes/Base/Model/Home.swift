@@ -8,8 +8,8 @@
 import Foundation
 import ThingSmartDeviceKit
 
-struct Home {
-    static var current: ThingSmartHomeModel? {
+public struct HejhomeHome {
+    public static var current: ThingSmartHomeModel? {
         get {
             let defaults = UserDefaults.standard
             guard let homeID = defaults.string(forKey: "CurrentHome") else { return nil }
@@ -22,7 +22,7 @@ struct Home {
         }
     }
     
-    static var homeId: Int64? {
+    public static var homeId: Int64? {
         get {
             let defaults = UserDefaults.standard
             guard let homeId = defaults.string(forKey: "CurrentHome") else { return nil }

@@ -34,10 +34,17 @@ public struct HejhomeDeviceModel: Codable {
     public var productId: String
     public var name: String
     public var homeId: Int64
+    
+    public init(deviceId: String, productId: String, name: String, homeId: Int64) {
+        self.deviceId = deviceId
+        self.productId = productId
+        self.name = name
+        self.homeId = homeId
+    }
 }
 
-struct Device {
-    static var current: ThingSmartDeviceModel? {
+public struct HejhomeDevice {
+    public static var current: ThingSmartDeviceModel? {
         get {
             let defaults = UserDefaults.standard
             guard let deviceId = defaults.string(forKey: "CurrentDevice") else { return nil }
@@ -49,7 +56,7 @@ struct Device {
         }
     }
     
-    static var deviceId: String {
+    public static var deviceId: String {
         get {
             let defaults = UserDefaults.standard
             guard let deviceId = defaults.string(forKey: "CurrentDevice") else { return "" }
@@ -61,7 +68,7 @@ struct Device {
         }
     }
     
-    static var all: [HejhomeDeviceModel]? {
+    public static var all: [HejhomeDeviceModel]? {
         get {
             let defaults = UserDefaults.standard
             guard let savedObject = defaults.object(forKey: "UserAllDevices") as? Data else { return nil }
